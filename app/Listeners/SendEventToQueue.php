@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Process;
 class SendEventToQueue
 {
     public const string QUEUE_PREFIX = 'account_';
-    public const int MAX_QUEUES_COUNT = 10;
 
     /**
      * Handle the event.
@@ -18,10 +17,12 @@ class SendEventToQueue
     {
         $accountEvent = $event->accountEvent;
 
+        $maxQueueCount = config('common.queues.accounts_events.max_queue_count');
+
         $queueName = sprintf(
             "%s%s",
             self::QUEUE_PREFIX,
-            $accountEvent->accountId % self::MAX_QUEUES_COUNT
+            $accountEvent->accountId % $maxQueueCount
         );
 
         CreateAccountEvent::dispatch($accountEvent)->onQueue($queueName);

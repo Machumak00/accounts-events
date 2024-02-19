@@ -16,6 +16,7 @@ services:
         - "host.docker.internal:host-gateway"
     environment:
         PHP_IDE_CONFIG: "serverName=Docker"
+        ACCOUNT_EVENT_MAX_QUEUES_COUNT: ${ACCOUNT_EVENT_MAX_QUEUES_COUNT}
     depends_on:
       - mysql
 

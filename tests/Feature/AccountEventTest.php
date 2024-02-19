@@ -28,10 +28,12 @@ class AccountEventTest extends TestCase
             eventId: random_int(1, 1000),
         );
 
+        $maxQueueCount = config('common.queues.accounts_events.max_queue_count');
+
         $this->queueName = sprintf(
             "%s%s",
             SendEventToQueue::QUEUE_PREFIX,
-            $this->accountEvent->accountId % SendEventToQueue::MAX_QUEUES_COUNT
+            $this->accountEvent->accountId % $maxQueueCount
         );
     }
 
