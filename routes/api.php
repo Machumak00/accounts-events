@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('receive-event', [AccountEventController::class, 'receiveEvent']);
+Route::post('receive-event', [AccountEventController::class, 'receiveEvent'])
+    ->name('account-event.event-receive');
