@@ -17,7 +17,7 @@ class CreateAccountEvent implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct(private readonly AccountEventDTO $accountEvent)
+    public function __construct(public readonly AccountEventDTO $accountEvent)
     {
     }
 

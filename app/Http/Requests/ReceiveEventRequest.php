@@ -9,8 +9,8 @@ class ReceiveEventRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'account_id' => ['required', 'int'],
-            'event_id' => ['required', 'int']
+            'account_id' => ['required', 'int', 'min:1'],
+            'event_id' => ['required', 'int', 'min:1']
         ];
     }
 }
